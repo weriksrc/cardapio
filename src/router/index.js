@@ -5,14 +5,24 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/cardapios",
-    name: "cardapios",
+    path: "/pedidos",
+    name: "pedidos",
     component: () => import("@/layout/Index"),
     children: [
       {
-        path: "pedidos",
-        name: "pedidos",
-        component: () => import("@/modules/cardapio/views/Index"),
+        path: "categorias",
+        name: "categorias",
+        component: () => import("@/modules/pedidos/views/Categoria"),
+      },
+      {
+        path: "categorias/:idCategorias/cardapios",
+        name: "cardapios",
+        component: () => import("@/modules/pedidos/views/Cardapio"),
+      },
+      {
+        path: "categorias/:idCaterogia/cardapios/:idPoduto",
+        name: "add-pruduto-carrinho",
+        component: () => import("@/modules/pedidos/views/AddProductCart"),
       },
     ],
   },
