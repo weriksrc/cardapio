@@ -17,31 +17,20 @@
 </template>
 
 <script>
-//import produtos from '../services/Estoque/Produtos'
-// import categorias from '../services/Estoque/Categorias'
 export default {
   data() {
     return {
       colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4'
+        "indigo",
+        "warning",
+        "pink darken-2",
+        "red lighten-1",
+        "deep-purple accent-4",
       ],
-      slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth']
-    }
+      slides: ["First", "Second", "Third", "Fourth", "Fifth"],
+    };
   },
-
-  created() {
-    //
-    // produtos().show({ teste: 'cabeca de cavalo' }) lista por query string
-    // trocar po destroy, update ou store
-    // produtos(1).show() lista por id
-    // categorias(1).produtos(1).show()
-    // categorias(1).produtos({teste: 'cabeca de cavalo'})
-  }
-}
+};
 </script>
 
 <style>

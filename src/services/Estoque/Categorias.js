@@ -1,20 +1,20 @@
-import BaseService from '../BaseService'
-import produtos from './Produtos'
+import BaseService from "../BaseService";
+import produtos from "./Produtos";
 
 class Categorias extends BaseService {
-  constructor(id) {
-    super(id)
+  constructor(id = "") {
+    super(id);
   }
 
   resource() {
-    return 'categorias'
+    return "categorias";
   }
 
   relationship() {
     return {
-      produtos: produtos()
-    }
+      produtos: produtos(),
+    };
   }
 }
 
-export default (id) => new Categorias(id)
+export default (id) => new Categorias(id);

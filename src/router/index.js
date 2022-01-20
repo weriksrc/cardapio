@@ -1,21 +1,27 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/cardapios",
+    name: "cardapios",
+    component: () => import("@/layout/Index"),
+    children: [
+      {
+        path: "pedidos",
+        name: "pedidos",
+        component: () => import("@/modules/cardapio/views/Index"),
+      },
+    ],
   },
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
