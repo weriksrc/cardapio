@@ -1,21 +1,19 @@
 <template>
   <div>
     <CurrentImageCategory />
-    <ListProdudo />
+    <ListProduto />
   </div>
 </template>
 
 <script>
-import CurrentImageCategory from "../components/CurrentImageCategory"
-import ListProdudo from "../components/ListProdudo"
+import CurrentImageCategory from "../components/CurrentImageCategory";
+import ListProduto from "../components/ListProduto";
 export default {
-  components:{
+  components: {
     CurrentImageCategory,
-    ListProdudo
-  }
-}
+    ListProduto,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -20,7 +20,7 @@ const routes = [
         component: () => import("@/modules/pedidos/views/Cardapio"),
       },
       {
-        path: "categorias/:idCaterogia/cardapios/:idPoduto",
+        path: "categorias/:idCaterogia/cardapios/:idProduto",
         name: "add-pruduto-carrinho",
         component: () => import("@/modules/pedidos/views/AddProductCart"),
       },

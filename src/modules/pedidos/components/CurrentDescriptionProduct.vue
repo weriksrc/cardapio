@@ -1,13 +1,15 @@
 <template>
-  <div>CurrentDescriptionProduct</div>
+  <div>descricao {{ descricao }}</div>
 </template>
 
 <script>
 export default {
-
-}
+  props: {
+    descricao: {
+      type: String,
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
