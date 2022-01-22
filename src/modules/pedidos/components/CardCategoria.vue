@@ -35,9 +35,10 @@ export default {
       items: [],
     };
   },
+  //teste
   methods: {
     async categoriasShow() {
-      let response = await servicesCategorias().show({cardapio: 1 });
+      let response = await servicesCategorias().show({ cardapio: 1 });
       this.items = response.data.data;
     },
   },
