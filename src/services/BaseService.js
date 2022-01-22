@@ -6,18 +6,15 @@ export default class BaseService {
   uriRelationship = "";
 
   constructor(id = "") {
-    console.log("id", id);
     this.id = id;
     this.uri = this.initializeUri();
     this.initiazileRelationships();
   }
 
   show(params = {}) {
-    console.log("uri", this.uri);
     if (!(typeof params === "object")) {
       this.uri += `/${params}`;
     }
-    console.log("uri", this.uri);
     return http.get(this.uri, { params });
   }
 
@@ -34,10 +31,7 @@ export default class BaseService {
   }
 
   async initiazileRelationships() {
-    console.log("initiazileRelationships");
     for (const key in this.relationship()) {
-      console.log(key);
-
       this[key] = (id) => {
         this.uri +=
           "/" + this.relationship()[key].resource() + (id ? "/" + id : "");

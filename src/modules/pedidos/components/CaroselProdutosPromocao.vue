@@ -21,11 +21,18 @@ export default {
 
   methods: {
     async showProdutosPromocoes() {
-      let { data } = await servicesProdutos().show({
-        cardapio: 1,
-        // valor_desconto: 50,
-      });
-      this.items = data.data;
+      try {
+        this.$loading(true);
+        let { data } = await servicesProdutos().show({
+          cardapio: 1,
+          // valor_desconto: 50,
+        });
+        this.items = data.data;
+      } catch (error) {
+        this.$loading(false);
+      } finally {
+        this.$loading(false);
+      }
     },
   },
 

@@ -38,8 +38,14 @@ export default {
   //teste
   methods: {
     async categoriasShow() {
-      let response = await servicesCategorias().show({ cardapio: 1 });
-      this.items = response.data.data;
+      try {
+        this.$loading(true);
+        let response = await servicesCategorias().show({ cardapio: 1 });
+        this.items = response.data.data;
+      } catch (error) {
+      } finally {
+        this.$loading(false);
+      }
     },
   },
   created() {

@@ -4,9 +4,10 @@ import "./registerServiceWorker";
 import store from "./store";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
+import loader from "./support/loading";
 
 Vue.config.productionTip = false;
-
+Vue.use(loader);
 new Vue({
   router,
   vuetify,

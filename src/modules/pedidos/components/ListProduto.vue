@@ -38,7 +38,6 @@ export default {
         cardapio: 1,
         categoria_id: this.$route.params.idCategorias,
       });
-      console.log("data", data);
       this.items = data.data;
     },
   },

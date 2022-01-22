@@ -36,7 +36,6 @@ export default {
   },
   created() {
     this.showProduto();
-    console.log("adicionais", this.produto.relationships.adicionais);
   },
 };
 </script>
