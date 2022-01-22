@@ -26,6 +26,12 @@ const routes = [
       },
     ],
   },
+
+  {
+    path: "/auth/qrcode/:token",
+    name: "auth-qrcode",
+    component: () => import("@/modules/auth/views/Qrcode"),
+  },
 ];
 
 const router = new VueRouter({
