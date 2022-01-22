@@ -17,11 +17,11 @@
 
           <v-img
             height="150"
-            lazy-src="https://picsum.photos/id/11/10/6"
+            lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
             :src="item.imagen_path"
           ></v-img>
         </v-card>
-        <v-card-title class="mx-auto">Cafes</v-card-title>
+        <v-card-title class="mx-auto">{{ item.descricao }}</v-card-title>
       </v-col>
     </v-row>
   </v-container>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async categoriasShow() {
-      let response = await servicesCategorias().show({ cardapio: 1 });
+      let response = await servicesCategorias().show({cardapio: 1 });
       this.items = response.data.data;
     },
   },
