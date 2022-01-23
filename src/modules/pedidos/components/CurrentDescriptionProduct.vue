@@ -1,13 +1,20 @@
 <template>
   <v-container>
-    <v-row class="justify-space-between pa-3" color="red">
-      <div>{{ produto.nome }}</div>
-      <div>R$ {{ produto.valor_venda }}</div>
+    <v-row class="justify-space-between">
+      <div class="pa-2">
+        <strong>{{ produto.nome }}</strong>
+      </div>
+      <div class="pa-2">R$ {{ totalPedido }}</div>
     </v-row>
+    <v-row>
+      <div class="pa-2">{{ produto.descricao || "Sem descrição" }}</div>
+    </v-row>
+    <v-divider class="mt-2"></v-divider>
   </v-container>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: {
     produto: {
@@ -20,6 +27,18 @@ export default {
         default: "",
       },
       type: Object,
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getTotalAdicionais: "pedidos/getTotalAdicionais",
+    }),
+
+    totalPedido() {
+      return (
+        parseFloat(this.getTotalAdicionais) +
+        parseFloat(this.produto.valor_venda)
+      );
     },
   },
   watch: {

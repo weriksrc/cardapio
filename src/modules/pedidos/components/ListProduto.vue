@@ -38,11 +38,17 @@ export default {
 
   methods: {
     async showProdutos() {
-      let { data } = await serviceProduto().show({
-        cardapio: 1,
-        categoria_id: this.$route.params.idCategorias,
-      });
-      this.items = data.data;
+      try {
+        this.$loading(true);
+        let { data } = await serviceProduto().show({
+          cardapio: 1,
+          categoria_id: this.$route.params.idCategorias,
+        });
+        this.items = data.data;
+      } catch (error) {
+      } finally {
+        this.$loading(false);
+      }
     },
   },
 
