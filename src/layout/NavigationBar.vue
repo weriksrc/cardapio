@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation-bar">
+  <div class="navigation-bar mt-5">
     <v-row class="line-navigation-bar">
       <v-col class="d-flex justify-center pt-0">
         <v-btn icon>

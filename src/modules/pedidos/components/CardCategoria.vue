@@ -1,27 +1,39 @@
 <template>
   <v-container fluid>
-    <v-row dense>
-      <v-col v-for="item in items" :key="item.id" cols="6" sm="6" md="4">
-        <v-card
-          :loading="false"
-          max-width="200"
-          :to="`categorias/${item.id}/cardapios`"
-        >
-          <template slot="progress">
-            <v-progress-linear
-              color="deep-purple"
-              height="10"
-              indeterminate
-            ></v-progress-linear>
-          </template>
+    <v-row class="mt-2 mb-8" dense>
+      <v-col
+        class="d-inline-block"
+        v-for="item in items"
+        :key="item.id"
+        cols="6"
+        sm="6"
+        md="4"
+      >
+        <v-hover v-slot="{ hover }">
+          <v-card
+            rounded="1"
+            :elevation="hover ? 20 : 2"
+            class="center"
+            :loading="false"
+            max-width="250"
+            :to="`categorias/${item.id}/cardapios`"
+          >
+            <template slot="progress">
+              <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+              ></v-progress-linear>
+            </template>
 
-          <v-img
-            height="150"
-            lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
-            :src="item.imagen_path"
-          ></v-img>
-        </v-card>
-        <v-card-title class="mx-auto">{{ item.descricao }}</v-card-title>
+            <v-img
+              height="150"
+              lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
+              :src="item.imagen_path"
+            ></v-img>
+          </v-card>
+        </v-hover>
+        <v-card-title class="mx-auto center">{{ item.descricao }}</v-card-title>
       </v-col>
     </v-row>
   </v-container>
@@ -54,4 +66,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.center {
+  justify-content: center;
+}
+</style>

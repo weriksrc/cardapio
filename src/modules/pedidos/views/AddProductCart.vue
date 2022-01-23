@@ -1,8 +1,7 @@
 <template>
   <div>
-    {{ produto.nome }}
-    <CurrentCaroselProduct />
-    <CurrentDescriptionProduct :descricao="produto.nome" />
+    <CurrentCaroselProduct :produto="produto" />
+    <CurrentDescriptionProduct :produto="produto" />
     <ListCurrentAdditionalProduct
       :adicionais="produto.relationships.adicionais"
     />
