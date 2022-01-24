@@ -15,6 +15,8 @@ import CurrentDescriptionProduct from "../components/CurrentDescriptionProduct";
 import ListCurrentAdditionalProduct from "../components/ListCurrentAdditionalProduct";
 import BtnCart from "../components/BtnCart";
 import serviceProduto from "../../../services/Estoque/Produtos";
+
+import { mapActions } from "vuex";
 export default {
   components: {
     CurrentCaroselProduct,
@@ -24,10 +26,18 @@ export default {
   },
   data() {
     return {
-      produto: {},
+      produto: {
+        relationships: {
+          adicionais: [],
+          imagens: [],
+        },
+      },
     };
   },
   methods: {
+    ...mapActions({
+      actionProdutoSelect: "pedidos/actionProdutoSelect",
+    }),
     async showProduto() {
       try {
         this.$loading(true);
@@ -36,6 +46,7 @@ export default {
         });
 
         this.produto = data.data;
+        this.actionProdutoSelect(data.data);
       } catch (error) {
       } finally {
         this.$loading(false);

@@ -33,6 +33,7 @@
             </v-list-item-content>
             <v-list-item-action>
               <v-text-field
+                class="whidt-qt"
                 @click="addProdutoAdicional()"
                 name="quantidade"
                 label="QT"
@@ -75,20 +76,30 @@ export default {
   methods: {
     ...mapActions({
       actionTotalAdicionais: "pedidos/actionTotalAdicionais",
+      actionAdicionaisCheck: "pedidos/actionAdicionaisCheck",
     }),
     addProdutoAdicional() {
       let total = 0;
+      let adicionais = [];
       this.items.map((element) => {
         if (element.check) {
           total +=
             parseFloat(element.valor_venda) * parseFloat(element.quantidade);
+          adicionais.push(element);
         }
       });
+
       this.total = total;
+
       this.actionTotalAdicionais(total);
+      this.actionAdicionaisCheck(adicionais);
     },
   },
 };
 </script>
 
-<style></style>
+<style scopde>
+.whidt-qt {
+  width: 30px;
+}
+</style>

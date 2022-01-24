@@ -6,16 +6,7 @@
           <v-icon> mdi-home </v-icon>
         </v-btn>
       </v-col>
-      <v-col class="d-flex justify-center pt-0">
-        <v-btn icon>
-          <v-icon> mdi-file </v-icon>
-        </v-btn>
-      </v-col>
-      <v-col class="d-flex justify-center pt-0">
-        <v-btn icon>
-          <v-icon> mdi-bullhorn </v-icon>
-        </v-btn>
-      </v-col>
+
       <v-col class="d-flex justify-center pt-0">
         <v-btn icon>
           <v-icon> mdi-account </v-icon>

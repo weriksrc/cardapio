@@ -4,7 +4,17 @@
       <div class="pa-2">
         <strong>{{ produto.nome }}</strong>
       </div>
-      <div class="pa-2">R$ {{ totalPedido }}</div>
+      <div class="pa-2">R$ {{ getTotalCurrentProduto }}</div>
+    </v-row>
+    <v-row>
+      <div class="pa-2">
+        <v-text-field
+          type="number"
+          v-model="quantidade"
+          name="quantidade"
+          label="Quantidade"
+        ></v-text-field>
+      </div>
     </v-row>
     <v-row>
       <div class="pa-2">{{ produto.descricao || "Sem descrição" }}</div>
@@ -14,7 +24,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   props: {
     produto: {
@@ -32,19 +42,31 @@ export default {
   computed: {
     ...mapGetters({
       getTotalAdicionais: "pedidos/getTotalAdicionais",
+      getQuantidadeCurrentProduto: "pedidos/getQuantidadeCurrentProduto",
+      getTotalCurrentProduto: "pedidos/getTotalCurrentProduto",
     }),
-
-    totalPedido() {
-      return (
-        parseFloat(this.getTotalAdicionais) +
-        parseFloat(this.produto.valor_venda)
-      );
+    quantidade: {
+      // getter
+      get() {
+        return this.getQuantidadeCurrentProduto;
+      },
+      // setter
+      set(newValue) {
+        this.actionQuantidadeCurrentProduto(newValue);
+      },
     },
   },
   watch: {
     produto() {
       console.log("descripiton", this.produto);
     },
+  },
+
+  methods: {
+    ...mapActions({
+      actionQuantidadeProdutoSelect: "pedidos/actionQuantidadeProdutoSelect",
+      actionQuantidadeCurrentProduto: "pedidos/actionQuantidadeCurrentProduto",
+    }),
   },
 };
 </script>
