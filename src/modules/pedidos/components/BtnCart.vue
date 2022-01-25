@@ -11,9 +11,9 @@
       <v-icon dark> mdi-cart-arrow-down </v-icon>
     </v-btn>
 
-    <v-dialog v-model="dialog" fullscreen>
+    <v-dialog class="v-dialog-margin" max-width="600" v-model="dialog">
       <v-card class="justify-center">
-        <v-card-title class="grey lighten-2">
+        <v-card-title class="lighten-2">
           <v-btn @click="dialog = false" icon>
             <v-icon>mdi-arrow-left-bold-outline</v-icon>
           </v-btn>
@@ -45,10 +45,10 @@
             >Pedir
           </v-btn>
           <v-btn
-            color="primary"
+            color="success"
             text
             @click="
-              actionAddCurrentProdutoCart();
+              actionAddCurrentProdutoInCart();
               dialog = false;
             "
             >Adicionar ao carinho
@@ -88,7 +88,7 @@ export default {
   methods: {
     ...mapActions({
       actionObervacaoCurrentProduto: "pedidos/actionObervacaoCurrentProduto",
-      actionAddCurrentProdutoCart: "pedidos/actionAddCurrentProdutoCart",
+      actionAddCurrentProdutoInCart: "pedidos/actionAddCurrentProdutoInCart",
     }),
   },
 };
@@ -101,7 +101,6 @@ export default {
   bottom: 30px;
   transform: translateX(-50%);
 }
-
 .center {
   justify-content: center;
 }

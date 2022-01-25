@@ -10,6 +10,11 @@ const routes = [
     component: () => import("@/layout/Index"),
     children: [
       {
+        path: "carrinho",
+        name: "carrinho",
+        component: () => import("@/modules/pedidos/views/Cart"),
+      },
+      {
         path: "categorias",
         name: "categorias",
         component: () => import("@/modules/pedidos/views/Categoria"),

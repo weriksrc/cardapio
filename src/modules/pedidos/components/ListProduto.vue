@@ -1,6 +1,6 @@
 <template>
   <v-list two-line class="mb-12">
-    <template v-for="item in items">
+    <template v-for="item in produtos">
       <v-list-item class="mt-5" :key="item.id" :to="`cardapios/${item.id}`">
         <v-card rounded="2">
           <v-img
@@ -28,32 +28,11 @@
 </template>
 
 <script>
-import serviceProduto from "../../../services/Estoque/Produtos";
 export default {
-  data() {
-    return {
-      items: [],
-    };
-  },
-
-  methods: {
-    async showProdutos() {
-      try {
-        this.$loading(true);
-        let { data } = await serviceProduto().show({
-          cardapio: 1,
-          categoria_id: this.$route.params.idCategorias,
-        });
-        this.items = data.data;
-      } catch (error) {
-      } finally {
-        this.$loading(false);
-      }
+  props: {
+    produtos: {
+      type: Array,
     },
-  },
-
-  created() {
-    this.showProdutos();
   },
 };
 </script>

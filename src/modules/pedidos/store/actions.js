@@ -19,7 +19,7 @@ export default {
     await commit("setObervacaoCurrentProduto", observacao);
   },
 
-  async actionAddCurrentProdutoCart({ commit }) {
-    await commit("setAddCurrentProdutoCart");
+  async actionAddCurrentProdutoInCart({ commit }) {
+    await commit("setAddCurrentProdutoInCart");
   },
 };

@@ -52,8 +52,9 @@ export default {
     async categoriasShow() {
       try {
         this.$loading(true);
-        let response = await servicesCategorias().show({ cardapio: 1 });
-        this.items = response.data.data;
+        let { data } = await servicesCategorias().show({ cardapio: 1 });
+        console.log(data);
+        this.items = data.data;
       } catch (error) {
       } finally {
         this.$loading(false);

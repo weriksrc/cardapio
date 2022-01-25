@@ -5,8 +5,11 @@ export default {
   getTotalCurrentProduto: (state) => {
     return (
       state.currentProduto.quantidade *
-      (state.currentProduto.valor_venda + state.totalAdicionais)
+      (parseFloat(state.currentProduto.valor_venda) +
+        parseFloat(state.totalAdicionais))
     );
   },
   getObservacaoCurrentProduto: (state) => state.currentProduto.observacao,
+
+  getCart: (state) => state.cart,
 };

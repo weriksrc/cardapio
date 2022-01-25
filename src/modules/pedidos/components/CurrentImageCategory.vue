@@ -9,24 +9,11 @@
 </template>
 
 <script>
-import serviceCategorias from "../../../services/Estoque/Categorias";
 export default {
-  data() {
-    return {
-      src: "",
-    };
-  },
-  methods: {
-    async showCategoria() {
-      let { data } = await serviceCategorias(
-        this.$route.params.idCategorias
-      ).show({ includes: "produtos" });
-      this.src = data.data.imagen_path;
+  props: {
+    src: {
+      type: String,
     },
-  },
-
-  created() {
-    this.showCategoria();
   },
 };
 </script>

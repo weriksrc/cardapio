@@ -23,6 +23,7 @@ export default {};
 <style>
 .navigation-bar {
   position: fixed;
+
   z-index: 2;
   width: 100%;
   bottom: 0;
