@@ -53,7 +53,6 @@ export default {
       try {
         this.$loading(true);
         let { data } = await servicesCategorias().show({ cardapio: 1 });
-        console.log(data);
         this.items = data.data;
       } catch (error) {
       } finally {

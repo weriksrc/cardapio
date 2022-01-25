@@ -56,11 +56,6 @@ export default {
       },
     },
   },
-  watch: {
-    produto() {
-      console.log("descripiton", this.produto);
-    },
-  },
 
   methods: {
     ...mapActions({

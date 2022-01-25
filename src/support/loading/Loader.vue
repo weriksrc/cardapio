@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     show(active) {
-      console.log("teste de load", active);
       this.active = active;
     },
   },
