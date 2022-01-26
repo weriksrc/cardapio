@@ -1,15 +1,38 @@
 export default {
-  getTotalAdicionais: (state) => state.totalAdicionais,
   getCurrentProduto: (state) => state.currentProduto,
-  getQuantidadeCurrentProduto: (state) => state.currentProduto.quantidade,
-  getTotalCurrentProduto: (state) => {
-    return (
-      state.currentProduto.quantidade *
-      (parseFloat(state.currentProduto.valor_venda) +
-        parseFloat(state.totalAdicionais))
-    );
+
+  getTotalCurrentProduto: (state, getters) => {
+    return getters.calculaValorTotalProdutoComAdicionais(state.currentProduto);
   },
-  getObservacaoCurrentProduto: (state) => state.currentProduto.observacao,
 
   getCart: (state) => state.cart,
+
+  getProdutoCart: (state) => (key) => {
+    return state.cart.produtos[key];
+  },
+
+  getValorTotalProdutosCart(state, getters) {
+    let totalCarrinho = 0;
+    state.cart.produtos.map((produto) => {
+      totalCarrinho += getters.calculaValorTotalProdutoComAdicionais(produto);
+    });
+    return totalCarrinho;
+  },
+
+  calculaValorTotalProdutoComAdicionais: () => (produto) => {
+    let totalAdicionais = 0;
+
+    produto.relationships.adicionais.map((adicional) => {
+      if (adicional.check) {
+        totalAdicionais +=
+          parseFloat(adicional.quantidade) * parseFloat(adicional.valor_venda);
+      }
+    });
+
+    let valorVenda = parseFloat(produto.valor_venda);
+    let quantidade = parseFloat(produto.quantidade);
+    let totalProduto = (valorVenda + totalAdicionais) * quantidade;
+
+    return totalProduto;
+  },
 };

@@ -1,6 +1,6 @@
 export default {
-  totalAdicionais: 0,
   currentProduto: {
+    totalAdicionais: 0,
     produto_id: null,
     quantidade: 1,
     observacao: null,
@@ -11,7 +11,10 @@ export default {
     unidade_medida_id: null,
     categoria_id: null,
     cardapio: null,
-    adicionais: [],
+    relationships: {
+      adicionais: [],
+      imagens: [],
+    },
   },
   cart: {
     produtos: [],
