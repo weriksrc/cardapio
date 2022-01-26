@@ -1,6 +1,6 @@
 <template>
     <v-card class="pa-6 card-container">
-    <v-row class="mt-2 mb-8" justify="around">
+    <v-row justify="around">
       <v-col
         class="d-inline-block"
         v-for="item in items"
@@ -13,7 +13,7 @@
           <v-card
             rounded="1"
             :elevation="hover ? 20 : 2"
-            class="center"
+            class="center pa-0"
             :loading="false"
             max-width="200"
             max-height="200"
