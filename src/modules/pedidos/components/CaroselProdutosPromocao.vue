@@ -1,5 +1,5 @@
 <template>
-  <v-carousel cycle height="400" hide-delimiter-background show-arrows-on-hover>
+  <v-carousel cycle height="300" hide-delimiter-background show-arrows-on-hover>
     <v-carousel-item v-for="item in items" :key="item.id">
       <v-img
         lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
@@ -42,4 +42,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-carousel__controls {
+  min-height: 160px !important;
+}
+</style>
