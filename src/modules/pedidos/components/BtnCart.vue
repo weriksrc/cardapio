@@ -10,7 +10,6 @@
     >
       <v-icon dark> mdi-cart-arrow-down </v-icon>
     </v-btn>
-
     <v-dialog class="v-dialog-margin" max-width="600" v-model="dialog">
       <v-card class="justify-center">
         <v-card-title class="lighten-2">
@@ -18,7 +17,8 @@
             <v-icon>mdi-arrow-left-bold-outline</v-icon>
           </v-btn>
           <div class="ml-2">
-            {{ getCurrentProduto.nome }}, total R$ {{ getTotalCurrentProduto }}
+            {{ produto.nome }}, total R$
+            {{ getTotalCurrentProduto }}
           </div>
         </v-card-title>
         <v-card-text class="text-h6 lighten-2">
@@ -27,7 +27,7 @@
         </v-card-text>
         <div class="pa-5">
           <v-textarea
-            v-model="observacao"
+            v-model="produto.observacao"
             name="observacao"
             label="Observação"
           ></v-textarea>
@@ -48,10 +48,10 @@
             color="success"
             text
             @click="
-              actionAddCurrentProdutoInCart();
+              $emit('click:save');
               dialog = false;
             "
-            >Adicionar ao carinho
+            >{{ labelSave }}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -62,6 +62,15 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
+  props: {
+    produto: {
+      type: Object,
+    },
+    labelSave: {
+      type: String,
+      default: "Adiciona ao Carrinho",
+    },
+  },
   data() {
     return {
       dialog: false,
@@ -70,25 +79,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      getCurrentProduto: "pedidos/getCurrentProduto",
       getTotalCurrentProduto: "pedidos/getTotalCurrentProduto",
-      getObservacaoCurrentProduto: "pedidos/getObservacaoCurrentProduto",
-    }),
-
-    observacao: {
-      get() {
-        return this.getObservacaoCurrentProduto;
-      },
-      set(newValue) {
-        this.actionObervacaoCurrentProduto(newValue);
-      },
-    },
-  },
-
-  methods: {
-    ...mapActions({
-      actionObervacaoCurrentProduto: "pedidos/actionObervacaoCurrentProduto",
-      actionAddCurrentProdutoInCart: "pedidos/actionAddCurrentProdutoInCart",
     }),
   },
 };
@@ -103,5 +94,14 @@ export default {
 }
 .center {
   justify-content: center;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 10s;
 }
 </style>

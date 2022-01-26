@@ -1,25 +1,26 @@
 export default {
-  async actionTotalAdicionais({ commit }, total) {
-    await commit("setTotalAdicionais", total);
-  },
-
-  async actionAdicionaisCheck({ commit }, adicionais) {
-    await commit("setAdicionaisCheck", adicionais);
-  },
-
   async actionProdutoSelect({ commit }, produto) {
-    await commit("setProdutoSelect", produto);
+    await produto.relationships.adicionais.map((adicional) =>
+      Object.assign(adicional, { quantidade: 1, check: false })
+    );
+
+    commit("setCurrentProduto", produto);
   },
 
-  async actionQuantidadeCurrentProduto({ commit }, quantidade) {
-    await commit("setQuantidadeCurrentProduto", quantidade);
+  async actionSelectProdutoCarForEdition({ commit, state }, key) {
+    let produto = state.cart.produtos[key];
+    Object.assign(produto, { keyCart: key });
+    commit("setCurrentProduto", produto);
   },
 
-  async actionObervacaoCurrentProduto({ commit }, observacao) {
-    await commit("setObervacaoCurrentProduto", observacao);
+  async actionCartProdutoEdite({ commit }, key, newValue) {
+    commit("setCartProdutoEdite", key, newValue);
   },
 
-  async actionAddCurrentProdutoInCart({ commit }) {
-    await commit("setAddCurrentProdutoInCart");
+  actionAddCurrentProdutoInCart({ commit }) {
+    commit("setAddCurrentProdutoInCart");
+  },
+  actionSelectProdutoCarForDestroy({ commit }, key) {
+    commit("setSelectProdutoCarForDestroy", key);
   },
 };

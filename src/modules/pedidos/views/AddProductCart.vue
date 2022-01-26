@@ -1,11 +1,12 @@
 <template>
   <div>
-    <CurrentCaroselProduct :produto="produto" />
-    <CurrentDescriptionProduct :produto="produto" />
-    <BtnCart />
-    <ListCurrentAdditionalProduct
-      :adicionais="produto.relationships.adicionais"
+    <CurrentCaroselProduct :produto.sync="produto" />
+    <CurrentDescriptionProduct :produto.sync="produto" />
+    <BtnCart
+      @click:save="actionAddCurrentProdutoInCart()"
+      :produto.sync="produto"
     />
+    <ListCurrentAdditionalProduct :produto.sync="produto" />
   </div>
 </template>
 
@@ -16,7 +17,7 @@ import ListCurrentAdditionalProduct from "../components/ListCurrentAdditionalPro
 import BtnCart from "../components/BtnCart";
 import serviceProduto from "../../../services/Estoque/Produtos";
 
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
     CurrentCaroselProduct,
@@ -24,19 +25,25 @@ export default {
     ListCurrentAdditionalProduct,
     BtnCart,
   },
-  data() {
-    return {
-      produto: {
-        relationships: {
-          adicionais: [],
-          imagens: [],
-        },
+  computed: {
+    ...mapGetters({
+      getCurretProduto: "pedidos/getCurrentProduto",
+    }),
+
+    produto: {
+      get() {
+        return this.getCurretProduto;
       },
-    };
+      set(newValue) {
+        console.log("teste", newValue);
+        this.actionProdutoSelect(newValue);
+      },
+    },
   },
   methods: {
     ...mapActions({
       actionProdutoSelect: "pedidos/actionProdutoSelect",
+      actionAddCurrentProdutoInCart: "pedidos/actionAddCurrentProdutoInCart",
     }),
     async showProduto() {
       try {
@@ -44,9 +51,7 @@ export default {
         let { data } = await serviceProduto(this.$route.params.idProduto).show({
           includes: "adicionais,imagens",
         });
-
-        this.produto = data.data;
-        this.actionProdutoSelect(data.data);
+        await this.actionProdutoSelect(data.data);
       } catch (error) {
       } finally {
         this.$loading(false);

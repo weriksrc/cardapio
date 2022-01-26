@@ -1,20 +1,21 @@
 <template>
   <div>
-    Carrinho
-    <ListProduto :produtos="getCart.produtos" />
+    total carrinho: R$ {{ getValorTotalProdutosCart }}
+    <ListProdutoCart :produtos="getCart.produtos" />
   </div>
 </template>
 
 <script>
-import ListProduto from "../components/ListProduto.vue";
+import ListProdutoCart from "../components/ListProdutoCart.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    ListProduto,
+    ListProdutoCart,
   },
   computed: {
     ...mapGetters({
       getCart: "pedidos/getCart",
+      getValorTotalProdutosCart: "pedidos/getValorTotalProdutosCart",
     }),
   },
 };

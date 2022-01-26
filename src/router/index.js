@@ -15,6 +15,11 @@ const routes = [
         component: () => import("@/modules/pedidos/views/Cart"),
       },
       {
+        path: "carrinho/aditar-pedido",
+        name: "editar-pedido",
+        component: () => import("@/modules/pedidos/views/EditProductCart"),
+      },
+      {
         path: "categorias",
         name: "categorias",
         component: () => import("@/modules/pedidos/views/Categoria"),

@@ -1,22 +1,17 @@
 <template>
   <v-container>
-    <div class="mb-8 pa-1" v-if="adicionais.length > 0">
+    <div class="mb-8 pa-1" v-if="produto.relationships.adicionais.length > 0">
       <v-list subheader two-line flat>
-        <strong>Adicionais</strong>
-        {{ total }}
+        <strong>Adicionias</strong>
         <v-list-item-group multiple>
           <v-list-item
-            v-for="item in items"
+            v-for="item in produto.relationships.adicionais"
             :key="item.id"
             :value="item.id"
             class="justify-space-around"
           >
             <v-list-item-action>
-              <v-checkbox
-                @click="addProdutoAdicional()"
-                v-model="item.check"
-                color="primary"
-              ></v-checkbox>
+              <v-checkbox v-model="item.check" color="primary"></v-checkbox>
             </v-list-item-action>
 
             <v-list-item-content>
@@ -27,14 +22,14 @@
 
               <v-list-item-subtitle class="text--primary">
                 {{
-                  item.descricao || "Sem descrição para esta produtos"
+                  item.descricao || "Sem descrição para esta produto"
                 }}</v-list-item-subtitle
               >
             </v-list-item-content>
             <v-list-item-action>
               <v-text-field
                 class="whidt-qt"
-                @click="addProdutoAdicional()"
+                value="1"
                 name="quantidade"
                 label="QT"
                 id="quantidade"
@@ -50,49 +45,10 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 export default {
   props: {
-    adicionais: {
-      type: Array,
-    },
-    default: [],
-  },
-  data() {
-    return {
-      settings: [],
-      total: 0,
-    };
-  },
-
-  computed: {
-    items() {
-      return this.adicionais.map((element) =>
-        Object.assign(element, { quantidade: 1, check: false })
-      );
-    },
-  },
-
-  methods: {
-    ...mapActions({
-      actionTotalAdicionais: "pedidos/actionTotalAdicionais",
-      actionAdicionaisCheck: "pedidos/actionAdicionaisCheck",
-    }),
-    addProdutoAdicional() {
-      let total = 0;
-      let adicionais = [];
-      this.items.map((element) => {
-        if (element.check) {
-          total +=
-            parseFloat(element.valor_venda) * parseFloat(element.quantidade);
-          adicionais.push(element);
-        }
-      });
-
-      this.total = total;
-
-      this.actionTotalAdicionais(total);
-      this.actionAdicionaisCheck(adicionais);
+    produto: {
+      type: Object,
     },
   },
 };
