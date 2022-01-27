@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <v-row class="mt-2 mb-8" dense>
+    <v-card class="pa-6 card-container">
+    <v-row justify="around">
       <v-col
         class="d-inline-block"
         v-for="item in items"
@@ -13,9 +13,10 @@
           <v-card
             rounded="1"
             :elevation="hover ? 20 : 2"
-            class="center"
+            class="center pa-0"
             :loading="false"
-            max-width="250"
+            max-width="200"
+            max-height="200"
             :to="`categorias/${item.id}/cardapios`"
           >
             <template slot="progress">
@@ -27,16 +28,19 @@
             </template>
 
             <v-img
-              height="150"
+              height="200"
               lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
               :src="item.imagen_path"
-            ></v-img>
+            > 
+            <div class="name-category">
+              <v-card-title class="mx-auto center white--text">{{ item.descricao }}</v-card-title>
+            </div>
+            </v-img>
           </v-card>
         </v-hover>
-        <v-card-title class="mx-auto center">{{ item.descricao }}</v-card-title>
       </v-col>
     </v-row>
-  </v-container>
+    </v-card>
 </template>
 
 <script>
@@ -69,5 +73,20 @@ export default {
 <style>
 .center {
   justify-content: center;
+}
+
+.card-container {
+  margin-top: -50px;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+}
+
+.name-category {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.9) 90%);
+  /* z-index: 2;
+  width: 100%; */
 }
 </style>
