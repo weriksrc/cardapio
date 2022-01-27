@@ -46,9 +46,9 @@ export default {
   methods: {
     ...mapActions({
       actionSelectProdutoCarForEdition:
-        "pedidos/actionSelectProdutoCarForEdition",
+        "cardapio/actionSelectProdutoCarForEdition",
       actionSelectProdutoCarForDestroy:
-        "pedidos/actionSelectProdutoCarForDestroy",
+        "cardapio/actionSelectProdutoCarForDestroy",
     }),
     selectProdutoEdite(key) {
       this.actionSelectProdutoCarForEdition(key);

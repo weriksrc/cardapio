@@ -17,13 +17,13 @@
     </v-btn>
 
     <v-badge
-      :value="!!getCart.produtos.length"
+      :value="!!getProdutos.length"
       dark
       class="mr-1"
-      :content="getCart.produtos.length"
+      :content="getProdutos.length"
       color="success"
     >
-      <v-icon size="24" @click="toCarrinho">mdi-cart-variant</v-icon>
+      <v-icon size="24" @click="toCarrinho()">mdi-cart-variant</v-icon>
     </v-badge>
   </v-app-bar>
 </template>
@@ -37,12 +37,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getCart: "pedidos/getCart",
+      getProdutos: "cart/getProdutos",
     }),
   },
   methods: {
     toCarrinho() {
-      this.$router.push("/pedidos/carrinho");
+      this.$router.push("/carrinho/produtos");
     },
   },
 };

@@ -79,7 +79,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      getTotalCurrentProduto: "pedidos/getTotalCurrentProduto",
+      getTotalCurrentProduto: "cardapio/getTotalCurrentProduto",
     }),
   },
 };

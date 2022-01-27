@@ -1,9 +1,10 @@
 <template>
   <div>
-    <CurrentCaroselProduct :produto.sync="produto" />
+    <!-- <CurrentCaroselProduct :produto.sync="produto" /> -->
     <CurrentDescriptionProduct :produto.sync="produto" />
     <BtnCart
-      @click:save="actionAddCurrentProdutoInCart()"
+      labelSave="Editar Pedido"
+      @click:save="editeProduto()"
       :produto.sync="produto"
     />
     <ListCurrentAdditionalProduct :produto.sync="produto" />
@@ -11,23 +12,22 @@
 </template>
 
 <script>
-import CurrentCaroselProduct from "../components/CurrentCaroselProduct";
+// import CurrentCaroselProduct from "../components/CurrentCaroselProduct";
 import CurrentDescriptionProduct from "../components/CurrentDescriptionProduct";
 import ListCurrentAdditionalProduct from "../components/ListCurrentAdditionalProduct";
 import BtnCart from "../components/BtnCart";
-import serviceProduto from "../../../services/Estoque/Produtos";
 
 import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
-    CurrentCaroselProduct,
+    //CurrentCaroselProduct,
     CurrentDescriptionProduct,
     ListCurrentAdditionalProduct,
     BtnCart,
   },
   computed: {
     ...mapGetters({
-      getCurretProduto: "pedidos/getCurrentProduto",
+      getCurretProduto: "cardapio/getCurrentProduto",
     }),
 
     produto: {
@@ -35,31 +35,20 @@ export default {
         return this.getCurretProduto;
       },
       set(newValue) {
-        console.log("teste", newValue);
         this.actionProdutoSelect(newValue);
       },
     },
   },
   methods: {
     ...mapActions({
-      actionProdutoSelect: "pedidos/actionProdutoSelect",
-      actionAddCurrentProdutoInCart: "pedidos/actionAddCurrentProdutoInCart",
+      actionProdutoSelect: "cardapio/actionProdutoSelect",
+      actionAddCurrentProdutoInCart: "cardapio/actionAddCurrentProdutoInCart",
     }),
-    async showProduto() {
-      try {
-        this.$loading(true);
-        let { data } = await serviceProduto(this.$route.params.idProduto).show({
-          includes: "adicionais,imagens",
-        });
-        await this.actionProdutoSelect(data.data);
-      } catch (error) {
-      } finally {
-        this.$loading(false);
-      }
+
+    editeProduto() {
+      this.actionAddCurrentProdutoInCart();
+      this.$router.push("/pedidos/carrinho");
     },
-  },
-  created() {
-    this.showProduto();
   },
 };
 </script>

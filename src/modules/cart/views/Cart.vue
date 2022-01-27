@@ -1,7 +1,7 @@
 <template>
   <div>
     total carrinho: R$ {{ getValorTotalProdutosCart }}
-    <ListProdutoCart :produtos="getCart.produtos" />
+    <ListProdutoCart :produtos="getProdutos" />
   </div>
 </template>
 
@@ -14,8 +14,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getCart: "pedidos/getCart",
-      getValorTotalProdutosCart: "pedidos/getValorTotalProdutosCart",
+      getProdutos: "cart/getProdutos",
     }),
   },
 };
