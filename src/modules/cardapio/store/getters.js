@@ -5,14 +5,6 @@ export default {
     return getters.calculaValorTotalProdutoComAdicionais(state.currentProduto);
   },
 
-  getValorTotalProdutosCart(state, getters) {
-    let totalCarrinho = 0;
-    state.cart.produtos.map((produto) => {
-      totalCarrinho += getters.calculaValorTotalProdutoComAdicionais(produto);
-    });
-    return totalCarrinho;
-  },
-
   calculaValorTotalProdutoComAdicionais: () => (produto) => {
     let totalAdicionais = 0;
 

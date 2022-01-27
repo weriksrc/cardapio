@@ -4,7 +4,6 @@ export default {
   },
 
   setAddProduto(state, produto) {
-    produto.len;
     state.produtos.push(produto);
   },
 

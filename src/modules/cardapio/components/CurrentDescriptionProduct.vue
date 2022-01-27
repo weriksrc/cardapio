@@ -4,22 +4,26 @@
       <div class="pa-2">
         <strong>{{ produto.nome }}</strong>
       </div>
-      <div class="pa-2">R$ {{ getTotalCurrentProduto || "Calculando..." }}</div>
     </v-row>
+
     <v-row>
-      <div class="pa-2">
+      <div class="pa-2">{{ produto.descricao }}</div>
+    </v-row>
+
+    <v-row class="justify-space-between pa-2">
+      <v-col cols="6" sm="2" md="6">
         <v-text-field
           type="number"
           v-model="produto.quantidade"
           name="quantidade"
           label="Quantidade"
         ></v-text-field>
-      </div>
+      </v-col>
+      <v-col cols="6">
+        <div>R$ {{ getTotalCurrentProduto || "..." }}</div>
+      </v-col>
     </v-row>
-    <v-row>
-      <div class="pa-2">{{ produto.descricao || "Sem descrição" }}</div>
-    </v-row>
-    <v-divider class="mt-2"></v-divider>''
+    <v-divider class="mt-2"></v-divider>
   </v-container>
 </template>
 
@@ -31,6 +35,9 @@ export default {
       nome: {
         type: String,
         default: "",
+      },
+      quantidade: {
+        type: String,
       },
       type: Object,
     },

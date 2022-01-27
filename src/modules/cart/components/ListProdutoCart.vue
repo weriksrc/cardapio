@@ -14,20 +14,20 @@
         <v-list-item-content>
           <v-list-item-title
             class="ml-5"
-            v-text="item.nome"
+            v-text="formatName(item)"
           ></v-list-item-title>
 
-          <v-list-item-subtitle
-            class="text--primary ml-5"
-            v-text="item.valor_venda"
-          ></v-list-item-subtitle>
+          <v-list-item-subtitle class="text--primary ml-5">
+            <p>qt {{ item.quantidade }}</p>
+            <p>R$ {{ item.totalComAdicionais }}</p>
+          </v-list-item-subtitle>
         </v-list-item-content>
-        <v-btn @click="selectProdutoEdite(key, item)" color="warning"
-          >editar</v-btn
-        >
-        <v-btn @click="produtoDestroy(key)" class="ml-2" color="error"
-          >excluir</v-btn
-        >
+        <v-btn icon @click="selectProdutoEdite(key, item)" color="warning">
+          <v-icon large>mdi-clipboard-edit-outline</v-icon>
+        </v-btn>
+        <v-btn icon @click="produtoDestroy(key)" class="ml-4" color="error">
+          <v-icon large>mdi-delete-outline</v-icon>
+        </v-btn>
       </v-list-item>
     </template>
   </v-list>
@@ -63,6 +63,13 @@ export default {
     },
     async produtoDestroy(key) {
       this.actionDestroyProduto(key);
+    },
+
+    formatName(item) {
+      console.log(item);
+      if (item.relationships.adicionais.length)
+        return `${item.nome} + adicionais`;
+      return item.nome;
     },
   },
 };

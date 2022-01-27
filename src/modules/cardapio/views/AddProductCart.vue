@@ -42,9 +42,9 @@ export default {
       actionAddProduto: "cart/actionAddProduto",
     }),
     async addProdutoCart() {
-      console.log("addProdutoCart", this.produto);
-      this.actionAddProduto(this.produto);
+      this.actionAddProduto(this.getCurrentProduto);
     },
+
     async showProduto() {
       try {
         this.$loading(true);
@@ -52,11 +52,13 @@ export default {
           includes: "adicionais,imagens",
         });
 
+        await Object.assign(data.data, { quantidade: 1 });
+
         await data.data.relationships.adicionais.map((adicional) =>
           Object.assign(adicional, { quantidade: 1, check: false })
         );
 
-        this.produto = data.data;
+        this.actionProdutoSelect(data.data);
       } catch (error) {
       } finally {
         this.$loading(false);

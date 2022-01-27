@@ -4,7 +4,7 @@ const http = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${store.state.auth.token}`,
+    Authorization: `Bearer ${process.env.VUE_APP_TOKEN}`, //store.state.auth.token
   },
 });
 
