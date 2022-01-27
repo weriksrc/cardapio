@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <v-row class="mt-2 mb-8" dense>
+  <v-card class="pa-6 card-container">
+    <v-row justify="around">
       <v-col
         class="d-inline-block"
         v-for="item in items"
@@ -30,13 +30,16 @@
               height="150"
               lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
               :src="item.imagen_path"
-            ></v-img>
+            >
+            <div class="name-category">
+              <v-card-title class="subtitle-1 center white--text">{{ item.descricao }}</v-card-title>
+            </div>
+            </v-img>
           </v-card>
         </v-hover>
-        <v-card-title class="mx-auto center">{{ item.descricao }}</v-card-title>
       </v-col>
     </v-row>
-  </v-container>
+  </v-card>
 </template>
 
 <script>
@@ -68,6 +71,22 @@ export default {
 
 <style>
 .center {
-  justify-content: center;
+  padding: 0 !important;
+  margin-top: 6px !important;
+  margin-bottom: 4px !important;
+  margin-left: 10px !important;
+}
+
+.card-container {
+  margin-top: -50px;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+}
+
+.name-category {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 0, 0, 0.781) 90%);
 }
 </style>
