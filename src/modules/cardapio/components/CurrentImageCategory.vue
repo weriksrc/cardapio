@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <v-img
-      lazy-src="https://picsum.photos/id/11/10/6"
-      max-height="250"
-      :src="src"
-    ></v-img>
-  </div>
+  <v-parallax src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg" height="250">
+  </v-parallax>
 </template>
 
 <script>
