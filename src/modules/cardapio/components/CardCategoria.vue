@@ -1,8 +1,7 @@
 <template>
   <v-card class="pa-6 card-container">
-    <v-row justify="around">
+    <v-row class="justify-space-around">
       <v-col
-        class="d-inline-block"
         v-for="item in items"
         :key="item.id"
         cols="6"
@@ -13,7 +12,7 @@
           <v-card
             rounded="1"
             :elevation="hover ? 20 : 2"
-            class="center"
+            class="card-column"
             :loading="false"
             max-width="250"
             :to="`categorias/${item.id}/produtos`"
@@ -70,11 +69,12 @@ export default {
 </script>
 
 <style>
-.center {
+.card-column {
   padding: 0 !important;
   margin-top: 6px !important;
   margin-bottom: 4px !important;
   margin-left: 10px !important;
+  margin: 0 auto !important;
 }
 
 .card-container {
@@ -89,4 +89,5 @@ export default {
   bottom: 0;
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 0, 0, 0.781) 90%);
 }
+
 </style>
