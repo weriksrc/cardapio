@@ -4,8 +4,8 @@
       <v-list-item class="mt-5" :key="item.id" :to="`produtos/${item.id}`">
         <v-card rounded="2">
           <v-img
-            lazy-src="https://picsum.photos/id/11/10/6"
-            max-height="120"
+            lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
+            max-height="150"
             max-width="150"
             :src="item.imagem"
           >
@@ -18,11 +18,12 @@
           ></v-list-item-title>
 
           <v-list-item-subtitle
-            class="text--primary ml-5"
-            v-text="item.valor_venda"
+            class="color-font-subtitle ml-5"
+            v-text="`A partir de R$ ${item.valor_venda}`"
           ></v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <v-divider :key="item.id" class="ma-4"></v-divider>
     </template>
   </v-list>
 </template>
@@ -37,4 +38,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.color-font-subtitle{
+  color: #00C853 !important;
+}
+</style>
