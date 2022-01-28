@@ -2,7 +2,7 @@
   <div>
     total carrinho: R$ {{ getValorTotal }}
     <ListProdutoCart :produtos="getProdutos" />
-    <BtnFazerPedido />
+    <BtnFazerPedido :produtos="getProdutos" />
   </div>
 </template>
 

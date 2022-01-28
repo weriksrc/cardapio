@@ -52,7 +52,10 @@ export default {
           includes: "adicionais,imagens",
         });
 
-        await Object.assign(data.data, { quantidade: 1 });
+        await Object.assign(data.data, {
+          quantidade: 1,
+          produto_id: data.data.id,
+        });
 
         await data.data.relationships.adicionais.map((adicional) =>
           Object.assign(adicional, { quantidade: 1, check: false })
