@@ -10,4 +10,9 @@ export default {
   setDestroyProduto(state, key) {
     state.produtos.splice(key, 1);
   },
+
+  setClearProdutosCart(state) {
+    console.log("setClearProdutosCart");
+    state.produtos = [];
+  },
 };

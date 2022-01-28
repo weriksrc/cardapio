@@ -12,4 +12,8 @@ export default {
   actionDestroyProduto({ commit }, key) {
     commit("setDestroyProduto", key);
   },
+
+  actionClearProdutosCart({ commit }) {
+    commit("setClearProdutosCart");
+  },
 };
