@@ -1,3 +1,3 @@
 export default {
-  getToken: (state) => state.token,
+  getUser: (state) => JSON.parse(localStorage.getItem("user")),
 };

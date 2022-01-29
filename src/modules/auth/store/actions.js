@@ -1,5 +1,5 @@
 export default {
-  async actionToken({ commit }, token) {
-    await commit("setToken", token);
+  actionUser({ commit }, user) {
+    commit("setUser", user);
   },
 };

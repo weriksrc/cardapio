@@ -6,7 +6,7 @@ class Pedidos extends BaseService {
   }
 
   resource() {
-    return "pedidos";
+    return "/api/pedidos";
   }
 
   relationship() {

@@ -1,6 +1,7 @@
 <template></template>
 
 <script>
+import serviceAuthMesas from "../../../services/Auth/authMesas";
 import { mapActions } from "vuex";
 export default {
   data() {
@@ -11,16 +12,25 @@ export default {
   methods: {
     ...mapActions({
       actionToken: "auth/actionToken",
+      actionUser: "auth/actionUser",
     }),
 
-    toPedidos() {
-      this.$router.push("/pedidos/categorias");
+    async showAuthMesas() {
+      try {
+        let { data } = await serviceAuthMesas(
+          `?token=${this.$route.params.token}`
+        ).store();
+
+        this.actionUser(data);
+
+        this.$router.push("/cardapio/categorias");
+      } catch (error) {
+        console.log("erro ao indentifica o ususario");
+      }
     },
   },
   created() {
-    this.token = this.$route.params.token;
-    this.actionToken(this.$route.params.token);
-    this.toPedidos();
+    this.showAuthMesas();
   },
 };
 </script>

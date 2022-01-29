@@ -1,8 +1,6 @@
 <template>
   <div class="pa-2">
-    <v-btn :loading="loading" @click="storePedido()" block color="success"
-      >Fazer pedido</v-btn
-    >
+    <v-btn @click="storePedido()" block color="success">Fazer pedido</v-btn>
   </div>
 </template>
 <script>
@@ -11,7 +9,7 @@ import { mapActions } from "vuex";
 export default {
   props: {
     produtos: {
-      type: Object,
+      type: Array,
     },
   },
 

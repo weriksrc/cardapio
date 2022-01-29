@@ -1,17 +1,17 @@
-import BaseService from '../BaseService'
+import BaseService from "../BaseService";
 
 class Produtos extends BaseService {
   constructor(id) {
-    super(id)
+    super(id);
   }
 
   resource() {
-    return 'produtos'
+    return "/api/produtos";
   }
 
   relationship() {
-    return {}
+    return {};
   }
 }
 
-export default (id) => new Produtos(id)
+export default (id) => new Produtos(id);

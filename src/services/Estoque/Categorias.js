@@ -7,7 +7,7 @@ class Categorias extends BaseService {
   }
 
   resource() {
-    return "categorias";
+    return "/api/categorias";
   }
 
   relationship() {

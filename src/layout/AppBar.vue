@@ -1,14 +1,7 @@
 <template>
-  <v-app-bar app color="primary" class="pa-1">
-    <div class="d-flex align-center">
-      <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
-        contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-        transition="scale-transition"
-        width="40"
-      />
+  <v-app-bar app color="error" class="pa-1">
+    <div class="d-flex align-center white--text">
+      Lucas <strong class="ml-3">Bars</strong>
     </div>
 
     <v-spacer></v-spacer>
