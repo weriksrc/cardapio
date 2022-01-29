@@ -1,13 +1,7 @@
 <template>
   <v-card class="pa-6 card-container">
     <v-row class="justify-space-around">
-      <v-col
-        v-for="item in items"
-        :key="item.id"
-        cols="6"
-        sm="6"
-        md="4"
-      >
+      <v-col v-for="item in items" :key="item.id" cols="6" sm="6" md="4">
         <v-hover v-slot="{ hover }">
           <v-card
             rounded="1"
@@ -30,9 +24,11 @@
               lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
               :src="item.imagen_path"
             >
-            <div class="name-category">
-              <v-card-title class="subtitle-1 center white--text">{{ item.descricao }}</v-card-title>
-            </div>
+              <div class="name-category">
+                <v-card-title class="subtitle-1 center white--text">{{
+                  item.descricao
+                }}</v-card-title>
+              </div>
             </v-img>
           </v-card>
         </v-hover>
@@ -87,7 +83,10 @@ export default {
   position: absolute;
   width: 100%;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 0, 0, 0.781) 90%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.781) 90%
+  );
 }
-
 </style>
