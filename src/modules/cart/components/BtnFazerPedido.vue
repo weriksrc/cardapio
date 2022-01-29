@@ -23,9 +23,9 @@ export default {
         let response = await Pedidos().store({ produtos: this.produtos });
         this.actionClearProdutosCart();
         this.$router.push("/cardapio/categorias");
-        this.$response("error");
+        this.$response("Pedido criado com sucesso :)");
       } catch (error) {
-        this.$response("Error o fasez pedido");
+        this.$response("Error o fazer pedido");
         console.log("pedidos", error.response);
       } finally {
         this.$loading(false);

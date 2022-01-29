@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app color="error" class="pa-1">
     <div class="d-flex align-center white--text">
-      Lucas <strong class="ml-3">Bars</strong>
+      Wers <strong class="ml-3">Bar's</strong>
     </div>
 
     <v-spacer></v-spacer>
