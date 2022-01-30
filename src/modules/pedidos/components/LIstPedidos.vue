@@ -59,10 +59,10 @@ export default {
     getProdutosPedido(item) {
       let produtos = "";
 
-      item?.relationships?.produtos.map((element) => {
-        produtos += "," + element.nome;
+      item?.produtos_pedidos.map((element) => {
+        produtos += "," + element.produto.nome;
       });
-      return produtos;
+      return produtos.substring(1);
     },
   },
 };

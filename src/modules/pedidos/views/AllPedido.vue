@@ -1,15 +1,18 @@
 <template>
   <div>
+    <BtnAdd />
     <ListPedidos :pedidos="pedidos" />
   </div>
 </template>
 <script>
 import ListPedidos from "../components/ListPedidos";
+import BtnAdd from "../components/BtnAdd";
 import servicePedidos from "../../../services/Pedidos/Pedidos";
 import { mapGetters } from "vuex";
 export default {
   components: {
     ListPedidos,
+    BtnAdd,
   },
   data() {
     return {
@@ -25,7 +28,9 @@ export default {
     async showPedidos() {
       try {
         this.$loading(true);
-        let { data } = await servicePedidos().show({ includes: "produtos" });
+        let { data } = await servicePedidos().show({
+          includes: "produtosPedidos.produto",
+        });
         this.pedidos = data.data;
         console.log("SHOW PEDIDOS", data.data);
       } catch (error) {
