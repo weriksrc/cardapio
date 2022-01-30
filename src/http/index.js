@@ -6,8 +6,8 @@ const http = axios.create({
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${
-      store.getters["auth/getUser"]?.access_token || ""
-    }`, // process.env.VUE_APP_TOKEN
+      process.env.VUE_APP_TOKEN || store.getters["auth/getUser"]?.access_token
+    }`, //
   },
 });
 

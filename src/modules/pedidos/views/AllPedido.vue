@@ -1,10 +1,16 @@
 <template>
-  <v-row class="d-inline"> <v-card> Pedidos </v-card> </v-row>
+  <div>
+    <ListPedidos :pedidos="pedidos" />
+  </div>
 </template>
 <script>
+import ListPedidos from "../components/ListPedidos";
 import servicePedidos from "../../../services/Pedidos/Pedidos";
 import { mapGetters } from "vuex";
 export default {
+  components: {
+    ListPedidos,
+  },
   data() {
     return {
       pedidos: [],
@@ -19,8 +25,9 @@ export default {
     async showPedidos() {
       try {
         this.$loading(true);
-        let { data } = await servicePedidos().show();
-        console.log(data);
+        let { data } = await servicePedidos().show({ includes: "produtos" });
+        this.pedidos = data.data;
+        console.log("SHOW PEDIDOS", data.data);
       } catch (error) {
         this.$response("Erro ao lista pedidos");
       } finally {
