@@ -3,13 +3,13 @@
     <v-row class="line-navigation-bar">
       <v-col class="d-flex justify-center pt-0">
         <v-btn icon>
-          <v-icon> mdi-home </v-icon>
+          <v-icon size="35"> mdi-bullhorn-outline </v-icon>
         </v-btn>
       </v-col>
 
       <v-col class="d-flex justify-center pt-0">
-        <v-btn icon>
-          <v-icon> mdi-account </v-icon>
+        <v-btn to="/pedidos/listar" icon>
+          <v-icon size="35"> mdi-clipboard-list-outline </v-icon>
         </v-btn>
       </v-col>
     </v-row>

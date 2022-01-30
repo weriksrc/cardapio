@@ -17,7 +17,7 @@ export default {
   calculaValorTotalProdutoComAdicionais: () => (produto) => {
     let totalAdicionais = 0;
 
-    produto.relationships.adicionais.map((adicional) => {
+    produto.adicionais.map((adicional) => {
       if (adicional.check) {
         totalAdicionais +=
           parseFloat(adicional.quantidade) * parseFloat(adicional.valor_venda);

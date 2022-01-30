@@ -15,12 +15,14 @@ export default {
   props: {
     produto: {
       type: Object,
+      imagens: {
+        type: Array,
+      },
     },
   },
   computed: {
     items() {
-      if (this.produto.relationships.imagens.length > 0)
-        return this.produto.relationships.imagens;
+      if (this.produto.imagens.length > 0) return this.produto.imagens;
       return [
         {
           imagem: this.produto.imagem,

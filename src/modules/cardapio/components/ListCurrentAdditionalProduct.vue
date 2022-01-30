@@ -1,11 +1,11 @@
 <template>
   <v-container>
-    <div class="mb-8 pa-1" v-if="produto.relationships.adicionais.length > 0">
+    <div class="mb-8 pa-1" v-if="produto.adicionais.length > 0">
       <v-list subheader two-line flat>
         <strong>Adicionias</strong>
         <v-list-item-group multiple>
           <v-list-item
-            v-for="item in produto.relationships.adicionais"
+            v-for="item in produto.adicionais"
             :key="item.id"
             :value="item.id"
             class="justify-space-around"

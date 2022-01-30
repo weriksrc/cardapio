@@ -28,8 +28,8 @@ export default {
           this.$route.params.idCategorias
         ).show({ includes: "produtos", cardapio: 1 });
 
-        this.imagemCategoria = data.data.imagen_path;
-        this.produtos = data.data.relationships.produtos;
+        this.imagemCategoria = data.imagen_path;
+        this.produtos = data.produtos;
       } catch (error) {
       } finally {
         this.$loading(false);

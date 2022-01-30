@@ -20,7 +20,8 @@ export default {
     async storePedido() {
       try {
         this.$loading(true);
-        let response = await Pedidos().store({ produtos: this.produtos });
+        let produtos = this.clearProdutoStore(this.produtos);
+        let response = await Pedidos().store({ produtos });
         this.actionClearProdutosCart();
         this.$router.push("/cardapio/categorias");
         this.$response("Pedido criado com sucesso :)");
@@ -30,6 +31,18 @@ export default {
       } finally {
         this.$loading(false);
       }
+    },
+
+    clearProdutoStore(produtos) {
+      return produtos.filter((element) => {
+        element.adicionais = element.adicionais.filter((element) => {
+          if (element.check) return element;
+        });
+
+        delete element.imagens;
+        if (!element.adicionais.length) delete element.adicionais;
+        return element;
+      });
     },
   },
 };

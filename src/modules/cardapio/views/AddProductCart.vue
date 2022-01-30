@@ -52,16 +52,16 @@ export default {
           includes: "adicionais,imagens",
         });
 
-        await Object.assign(data.data, {
+        await Object.assign(data, {
           quantidade: 1,
-          produto_id: data.data.id,
+          produto_id: data.id,
         });
 
-        await data.data.relationships.adicionais.map((adicional) =>
+        await data.adicionais.map((adicional) =>
           Object.assign(adicional, { quantidade: 1, check: false })
         );
 
-        this.actionProdutoSelect(data.data);
+        this.actionProdutoSelect(data);
       } catch (error) {
       } finally {
         this.$loading(false);

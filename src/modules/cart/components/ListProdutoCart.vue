@@ -39,15 +39,6 @@ export default {
   props: {
     produtos: {
       type: Array,
-      relationships: {
-        type: Object,
-        adicionais: {
-          type: Array,
-        },
-        imagens: {
-          type: Array,
-        },
-      },
     },
   },
 
@@ -67,8 +58,7 @@ export default {
 
     formatName(item) {
       console.log(item);
-      if (item.relationships.adicionais.length)
-        return `${item.nome} + adicionais`;
+      if (item.adicionais.length) return `${item.nome} + adicionais`;
       return item.nome;
     },
   },

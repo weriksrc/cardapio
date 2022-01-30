@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style>
-.color-font-subtitle{
-  color: #00C853 !important;
+.color-font-subtitle {
+  color: #00c853 !important;
 }
 </style>
