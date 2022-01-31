@@ -20,7 +20,9 @@ export default {
     async storePedido() {
       try {
         this.$loading(true);
+        console.log("pedidos", this.produtos);
         let produtos = this.clearProdutoStore(this.produtos);
+        console.log("produtos", produtos);
         let response = await Pedidos().store({ produtos });
         this.actionClearProdutosCart();
         this.$router.push("/cardapio/categorias");
@@ -34,15 +36,31 @@ export default {
     },
 
     clearProdutoStore(produtos) {
-      return produtos.filter((element) => {
-        element.adicionais = element.adicionais.filter((element) => {
-          if (element.check) return element;
-        });
-
-        delete element.imagens;
-        if (!element.adicionais.length) delete element.adicionais;
-        return element;
+      return produtos.map((produto) => {
+        return {
+          produto_id: produto.id,
+          quantidade: produto.quantidade,
+          observacao: produto.observacao,
+          produtos_adicionais: this.clearProdutosAdicionais(
+            produto.produtos_adicionais
+          ),
+        };
       });
+    },
+
+    clearProdutosAdicionais(produtosAdicionais) {
+      let adicionais = [];
+      produtosAdicionais.map((produtoAdicional) => {
+        if (produtoAdicional.check) {
+          adicionais.push({
+            produto_adicional_id: produtoAdicional.adicional.id,
+            quantidade: produtoAdicional.quantidade,
+            observacao: produtoAdicional.observacao,
+          });
+        }
+      });
+
+      return adicionais;
     },
   },
 };

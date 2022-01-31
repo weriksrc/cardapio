@@ -58,7 +58,7 @@ export default {
 
     formatName(item) {
       console.log(item);
-      if (item.adicionais.length) return `${item.nome} + adicionais`;
+      if (item.produtos_adicionais.length) return `${item.nome} + adicionais`;
       return item.nome;
     },
   },

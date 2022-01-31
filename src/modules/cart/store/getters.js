@@ -17,10 +17,11 @@ export default {
   calculaValorTotalProdutoComAdicionais: () => (produto) => {
     let totalAdicionais = 0;
 
-    produto.adicionais.map((adicional) => {
-      if (adicional.check) {
+    produto.produtos_adicionais.map((produtoAdicional) => {
+      if (produtoAdicional.check) {
         totalAdicionais +=
-          parseFloat(adicional.quantidade) * parseFloat(adicional.valor_venda);
+          parseFloat(produtoAdicional.quantidade) *
+          parseFloat(produtoAdicional.adicional.valor_venda);
       }
     });
 

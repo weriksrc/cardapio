@@ -23,9 +23,13 @@
                 </v-list-item-content>
 
                 <v-list-item-action>
-                  <v-list-item-action-text
-                    v-text="item.id"
-                  ></v-list-item-action-text>
+                  <v-chip
+                    :color="getStatusPedido(item).color"
+                    class="ma-2"
+                    small
+                  >
+                    {{ getStatusPedido(item).text }}
+                  </v-chip>
 
                   <v-icon v-if="!active" color="grey lighten-1">
                     mdi-star-outline
@@ -34,7 +38,7 @@
                 </v-list-item-action>
               </template>
             </v-list-item>
-            <v-divider :key="index"></v-divider>
+            <v-divider :key="index * 15"></v-divider>
           </template>
         </v-list-item-group>
       </v-list>
@@ -63,6 +67,33 @@ export default {
         produtos += "," + element.produto.nome;
       });
       return produtos.substring(1);
+    },
+
+    getStatusPedido(item) {
+      let status = {
+        1: {
+          color: "warning",
+          text: "Aguardando aprovação",
+        },
+        2: {
+          color: "accent",
+          text: "Pedido aprovado",
+        },
+        3: {
+          color: "primary",
+          text: "Saiu para Entrega",
+        },
+        4: {
+          color: "success",
+          text: "Entrege",
+        },
+        5: {
+          color: "error",
+          text: "Cancelado",
+        },
+      };
+
+      return status[item.status_pedido_id];
     },
   },
 };

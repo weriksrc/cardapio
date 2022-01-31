@@ -49,16 +49,17 @@ export default {
       try {
         this.$loading(true);
         let { data } = await serviceProduto(this.$route.params.idProduto).show({
-          includes: "adicionais,imagens",
+          includes: "produtosAdicionais.adicional,imagens",
         });
 
         await Object.assign(data, {
           quantidade: 1,
           produto_id: data.id,
+          observacao: "",
         });
 
-        await data.adicionais.map((adicional) =>
-          Object.assign(adicional, { quantidade: 1, check: false })
+        await data.produtos_adicionais.map((produtoAdicional) =>
+          Object.assign(produtoAdicional, { quantidade: 1, check: false })
         );
 
         this.actionProdutoSelect(data);

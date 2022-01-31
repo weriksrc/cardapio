@@ -1,12 +1,15 @@
 export default {
-  async actionEditeProduto({ commit }, newValue) {
+  async actionEditeProduto({ commit, getters }, newValue) {
+    let totalComAdicionais =
+      getters.calculaValorTotalProdutoComAdicionais(newValue);
+    newValue.totalComAdicionais = totalComAdicionais;
     commit("setEditeProduto", newValue);
   },
 
   actionAddProduto({ commit, getters }, produto) {
     let totalComAdicionais =
       getters.calculaValorTotalProdutoComAdicionais(produto);
-    Object.assign(produto, { totalComAdicionais });
+    produto.totalComAdicionais = totalComAdicionais;
     commit("setAddProduto", produto);
   },
   actionDestroyProduto({ commit }, key) {
