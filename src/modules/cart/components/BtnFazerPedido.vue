@@ -20,10 +20,10 @@ export default {
     async storePedido() {
       try {
         this.$loading(true);
-        console.log("pedidos", this.produtos);
+
         let produtos = this.clearProdutoStore(this.produtos);
-        console.log("produtos", produtos);
-        let response = await Pedidos().store({ produtos });
+
+        await Pedidos().store({ produtos });
         this.actionClearProdutosCart();
         this.$router.push("/cardapio/categorias");
         this.$response("Pedido criado com sucesso :)");
@@ -37,13 +37,15 @@ export default {
 
     clearProdutoStore(produtos) {
       return produtos.map((produto) => {
+        let adicionais = this.clearProdutosAdicionais(
+          produto.produtos_adicionais
+        );
+
         return {
           produto_id: produto.id,
           quantidade: produto.quantidade,
           observacao: produto.observacao,
-          produtos_adicionais: this.clearProdutosAdicionais(
-            produto.produtos_adicionais
-          ),
+          produtos_adicionais: adicionais,
         };
       });
     },
@@ -53,7 +55,7 @@ export default {
       produtosAdicionais.map((produtoAdicional) => {
         if (produtoAdicional.check) {
           adicionais.push({
-            produto_adicional_id: produtoAdicional.adicional.id,
+            produto_adicional_id: produtoAdicional.id,
             quantidade: produtoAdicional.quantidade,
             observacao: produtoAdicional.observacao,
           });

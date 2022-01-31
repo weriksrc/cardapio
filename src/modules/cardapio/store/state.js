@@ -10,7 +10,7 @@ export default {
     unidade_medida_id: null,
     categoria_id: null,
     cardapio: null,
-    adicionais: [],
+    produtos_adicionais: [],
     imagens: [],
   },
 };

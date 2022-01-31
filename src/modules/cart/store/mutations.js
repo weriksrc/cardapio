@@ -12,7 +12,6 @@ export default {
   },
 
   setClearProdutosCart(state) {
-    console.log("setClearProdutosCart");
     state.produtos = [];
   },
 };
