@@ -28,7 +28,7 @@ export default {
         this.$router.push("/cardapio/categorias");
         this.$response("Pedido criado com sucesso :)");
       } catch (error) {
-        this.$response("Error o fazer pedido");
+        this.$response("Error o fazer pedido", error);
         console.log("pedidos", error.response);
       } finally {
         this.$loading(false);
@@ -37,16 +37,19 @@ export default {
 
     clearProdutoStore(produtos) {
       return produtos.map((produto) => {
-        let adicionais = this.clearProdutosAdicionais(
+        let produtos_adicionais = this.clearProdutosAdicionais(
           produto.produtos_adicionais
         );
 
-        return {
+        let clearProduto = {
           produto_id: produto.id,
           quantidade: produto.quantidade,
           observacao: produto.observacao,
-          produtos_adicionais: adicionais,
         };
+
+        if (!produtos_adicionais.length) return clearProduto;
+
+        return Object.assign(clearProduto, { produtos_adicionais });
       });
     },
 
