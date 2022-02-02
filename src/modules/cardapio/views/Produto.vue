@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CurrentImageCategory :src="imagemCategoria" />
+    <CurrentImageCategory :categoria="categoria" />
     <ListProduto :produtos="produtos" />
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      imagemCategoria: "",
+      categoria: {},
       produtos: [],
     };
   },
@@ -27,8 +27,7 @@ export default {
         let { data } = await servicesCategorias(
           this.$route.params.idCategorias
         ).show({ includes: "produtos", cardapio: 1 });
-
-        this.imagemCategoria = data.imagen_path;
+        this.categoria = data;
         this.produtos = data.produtos;
       } catch (error) {
       } finally {
