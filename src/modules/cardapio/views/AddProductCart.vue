@@ -59,7 +59,7 @@ export default {
         });
 
         await data.produtos_adicionais.map((produtoAdicional) =>
-          Object.assign(produtoAdicional, { quantidade: 1, check: false })
+          Object.assign(produtoAdicional, { quantidade: 0, check: false })
         );
 
         this.actionProdutoSelect(data);

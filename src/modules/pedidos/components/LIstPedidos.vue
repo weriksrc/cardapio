@@ -4,7 +4,7 @@
       <v-list two-line>
         <v-list-item-group active-class="pink--text">
           <template v-for="(item, index) in pedidos">
-            <v-list-item :key="item.id">
+            <v-list-item :key="item.index">
               <template v-slot:default="{ active }">
                 <v-list-item-content class="mt-2">
                   <v-list-item-title

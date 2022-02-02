@@ -10,9 +10,9 @@
             :value="item.id"
             class="justify-space-around"
           >
-            <v-list-item-action>
+            <!-- <v-list-item-action>
               <v-checkbox v-model="item.check" color="primary"></v-checkbox>
-            </v-list-item-action>
+            </v-list-item-action> -->
 
             <v-list-item-content>
               <v-list-item-title>
@@ -24,15 +24,7 @@
               </v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-action>
-              <v-text-field
-                class="whidt-qt"
-                value="1"
-                name="quantidade"
-                label="QT"
-                id="quantidade"
-                type="number"
-                v-model="item.quantidade"
-              ></v-text-field>
+              <MinusPlus :max="3" v-model="item.quantidade" />
             </v-list-item-action>
           </v-list-item>
         </v-list-item-group>
@@ -42,11 +34,15 @@
 </template>
 
 <script>
+import MinusPlus from "@/components/MinusPlus.vue";
 export default {
   props: {
     produto: {
       type: Object,
     },
+  },
+  components: {
+    MinusPlus,
   },
 };
 </script>

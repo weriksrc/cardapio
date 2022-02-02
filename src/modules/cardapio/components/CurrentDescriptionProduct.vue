@@ -11,23 +11,20 @@
     </v-row>
 
     <v-row class="justify-space-between pa-2">
-      <v-col cols="6" sm="2" md="6">
-        <v-text-field
-          type="number"
-          v-model="produto.quantidade"
-          name="quantidade"
-          label="Quantidade"
-        ></v-text-field>
-      </v-col>
       <v-col cols="6">
         <div>R$ {{ getTotalCurrentProduto || "..." }}</div>
       </v-col>
+      <v-col cols="6" sm="2" md="6">
+        <MinusPlus :min="1" v-model="produto.quantidade" />
+      </v-col>
     </v-row>
+
     <v-divider class="mt-2"></v-divider>
   </v-container>
 </template>
 
 <script>
+import MinusPlus from "@/components/MinusPlus.vue";
 import { mapGetters } from "vuex";
 export default {
   props: {
@@ -41,6 +38,9 @@ export default {
       },
       type: Object,
     },
+  },
+  components: {
+    MinusPlus,
   },
   computed: {
     ...mapGetters({

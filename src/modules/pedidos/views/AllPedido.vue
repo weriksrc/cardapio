@@ -42,12 +42,9 @@ export default {
   },
   mounted() {
     console.log("pedidos");
-    Echo.private("store-pedido." + this.getUser.id).listen(
-      ".StorePedido",
-      (e) => {
-        console.log("DEU CETO", e);
-      }
-    );
+    Echo.private("store-pedido.4").listen(".StorePedido", (e) => {
+      console.log("DEU CETO", e);
+    });
   },
   created() {
     this.showPedidos();

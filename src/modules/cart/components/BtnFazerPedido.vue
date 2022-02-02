@@ -53,7 +53,7 @@ export default {
     clearProdutosAdicionais(produtosAdicionais) {
       let adicionais = [];
       produtosAdicionais.map((produtoAdicional) => {
-        if (produtoAdicional.check) {
+        if (produtoAdicional.quantidade) {
           adicionais.push({
             produto_adicional_id: produtoAdicional.id,
             quantidade: produtoAdicional.quantidade,

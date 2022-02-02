@@ -18,7 +18,7 @@ export default {
     let totalAdicionais = 0;
 
     produto.produtos_adicionais.map((produtoAdicional) => {
-      if (produtoAdicional.check) {
+      if (produtoAdicional.quantidade) {
         totalAdicionais +=
           parseFloat(produtoAdicional.quantidade) *
           parseFloat(produtoAdicional.adicional.valor_venda);

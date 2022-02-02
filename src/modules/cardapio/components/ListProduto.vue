@@ -5,8 +5,8 @@
         <v-card rounded="2">
           <v-img
             lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
-            max-height="150"
-            max-width="150"
+            max-height="80"
+            max-width="80"
             :src="item.imagem"
           >
           </v-img>
