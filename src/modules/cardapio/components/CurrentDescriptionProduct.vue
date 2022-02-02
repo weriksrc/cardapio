@@ -10,12 +10,12 @@
       <div class="pa-2">{{ produto.descricao }}</div>
     </v-row>
 
-    <v-row class="justify-space-between pa-2">
-      <v-col cols="6">
-        <div>R$ {{ getTotalCurrentProduto || "..." }}</div>
+    <v-row class="justify-space-around">
+      <v-col cols="6" class="center">
+        <div class="text-center">R$ {{ getTotalCurrentProduto || "..." }}</div>
       </v-col>
-      <v-col cols="6" sm="2" md="6">
-        <MinusPlus :min="1" v-model="produto.quantidade" />
+      <v-col cols="6" sm="2" md="6" class="center">
+        <MinusPlus class="text-center" :min="1" v-model="produto.quantidade" />
       </v-col>
     </v-row>
 
