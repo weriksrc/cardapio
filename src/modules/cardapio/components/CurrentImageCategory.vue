@@ -2,8 +2,8 @@
   <v-parallax :src="categoria.imagen_path" height="250">
     <v-row class="teste" align="center">
       <v-col class="text-center mt-15">
-        <h1 class="text-h3 font-weight-thin mb-4">{{ categoria.descricao }}</h1>
-        <h4 class="subheading">Drinks, sucos, destilados</h4>
+        <h1 class="text-h3 font-weight-thin mb-4">{{ categoria.nome }}</h1>
+        <h4 class="subheading">{{ categoria.descricao }}</h4>
       </v-col>
     </v-row>
   </v-parallax>

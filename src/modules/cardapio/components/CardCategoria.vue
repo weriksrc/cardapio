@@ -26,7 +26,7 @@
             >
               <div class="name-category">
                 <v-card-title class="subtitle-1 center white--text">{{
-                  item.descricao
+                  item.nome
                 }}</v-card-title>
               </div>
             </v-img>
