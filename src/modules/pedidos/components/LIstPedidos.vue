@@ -1,49 +1,49 @@
 <template>
-  <div>
-    <template>
-      <v-list two-line>
-        <v-list-item-group active-class="pink--text">
-          <template v-for="(item, index) in pedidos">
-            <v-list-item :key="item.index">
-              <template v-slot:default="{ active }">
-                <v-list-item-content class="mt-2">
-                  <v-list-item-title
-                    v-text="`n° - ${item.id}`"
-                  ></v-list-item-title>
+  <v-card class="mx-auto" max-width="500">
+    <v-list>
+      <v-list-group
+        v-for="pedido in pedidos"
+        :key="pedido.id"
+        v-model="pedido.active"
+        :prepend-icon="pedido.action"
+        no-action
+      >
+        <template v-slot:activator>
+          <v-list-item-content>
+            <v-list-item-title v-text="`nº ${pedido.id}`"></v-list-item-title>
+            <v-list-tile-sub-title v-show="!pedido.active"
+              >{{ getProdutosPedido(pedido) }}
+            </v-list-tile-sub-title>
+          </v-list-item-content>
 
-                  <v-list-item-subtitle
-                    class="text--primary"
-                    v-text="getProdutosPedido(item)"
-                  >
-                  </v-list-item-subtitle>
+          <v-list-item-action>
+            <v-chip :color="getStatusPedido(pedido).color" small>
+              {{ getStatusPedido(pedido).text }}
+            </v-chip>
+          </v-list-item-action>
+        </template>
 
-                  <v-list-item-subtitle
-                    v-text="`criado em ${item.created_at}`"
-                  ></v-list-item-subtitle>
-                </v-list-item-content>
-
-                <v-list-item-action>
-                  <v-chip
-                    :color="getStatusPedido(item).color"
-                    class="ma-2"
-                    small
-                  >
-                    {{ getStatusPedido(item).text }}
-                  </v-chip>
-
-                  <v-icon v-if="!active" color="grey lighten-1">
-                    mdi-star-outline
-                  </v-icon>
-                  <v-icon v-else color="yellow darken-3"> mdi-star </v-icon>
-                </v-list-item-action>
-              </template>
-            </v-list-item>
-            <v-divider :key="index * 15"></v-divider>
-          </template>
-        </v-list-item-group>
-      </v-list>
-    </template>
-  </div>
+        <v-list-item
+          v-for="(produtoPedido, index) in pedido.produtos_pedidos"
+          :key="index"
+        >
+          <v-list-item-avatar>
+            <v-icon class="grey lighten-1" dark> mdi-card-text </v-icon>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title
+              v-text="
+                `${produtoPedido.produto.nome} ${isAdicionais(produtoPedido)}`
+              "
+            ></v-list-item-title>
+          </v-list-item-content>
+          <v-list-item-action>
+            R$ {{ produtoPedido.produto.valor_venda }}
+          </v-list-item-action>
+        </v-list-item>
+      </v-list-group>
+    </v-list>
+  </v-card>
 </template>
 <script>
 export default {
@@ -69,6 +69,11 @@ export default {
       return produtos.substring(1);
     },
 
+    isAdicionais(produtoPedido) {
+      return produtoPedido.produtos_adicionais_pedidos.length
+        ? "+ Adicionais"
+        : "";
+    },
     getStatusPedido(item) {
       let status = {
         1: {

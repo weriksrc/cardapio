@@ -29,7 +29,8 @@ export default {
       try {
         this.$loading(true);
         let { data } = await servicePedidos().show({
-          includes: "produtosPedidos.produto",
+          includes:
+            "produtosPedidos.produto,produtosPedidos.produtosAdicionaisPedidos",
         });
         this.pedidos = data.data;
         console.log("SHOW PEDIDOS", data.data);
