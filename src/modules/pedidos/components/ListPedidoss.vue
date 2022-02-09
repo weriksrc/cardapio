@@ -73,6 +73,7 @@ export default {
       return produtoPedido.produtos_adicionais_pedidos.length
         ? "+ Adicionais"
         : "";
+      //teste
     },
     getStatusPedido(item) {
       let status = {
