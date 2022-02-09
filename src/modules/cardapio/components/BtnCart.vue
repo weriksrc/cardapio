@@ -32,10 +32,7 @@
             label="Observação"
           ></v-textarea>
         </div>
-        <v-card-text class="text-h6 lighten-2">
-          Voce pode fazer seu pedido direto ou adicionar ao carinho para pedir
-          varios produtos de uma vez
-        </v-card-text>
+
         <v-card-actions class="justify-space-between">
           <v-btn
             class="justify-center"

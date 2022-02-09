@@ -14,7 +14,7 @@ window.Pusher = require("pusher-js");
 window.Echo = new Echo({
   broadcaster: "pusher",
   key: "local",
-  wsHost: "localhost",
+  wsHost: process.env.VUE_APP_BASE_URL,
   wsPort: 6001,
   disableStats: true,
   //authEndpoint: "http://localhost:8000/broadcasting/auth",
