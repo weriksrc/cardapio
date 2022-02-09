@@ -19,11 +19,7 @@
               ></v-progress-linear>
             </template>
 
-            <v-img
-              height="150"
-              lazy-src="https://image.freepik.com/vetores-gratis/pagina-de-erro-404-nao-encontrada_114341-25.jpg"
-              :src="item.imagen_path"
-            >
+            <v-img height="150" :src="item.imagen_path">
               <div class="name-category">
                 <v-card-title class="subtitle-1 center white--text">{{
                   item.nome
