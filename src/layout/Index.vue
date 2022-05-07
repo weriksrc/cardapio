@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <AppBar />
-      <router-view class="mb-5"/>
+      <router-view class="mb-5" />
       <NavigationBar />
     </v-main>
   </v-app>

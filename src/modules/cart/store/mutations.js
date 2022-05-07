@@ -4,7 +4,7 @@ export default {
   },
 
   setAddProduto(state, produto) {
-    state.produtos.push(produto);
+    state.produtos.unshift(produto);
   },
 
   setDestroyProduto(state, key) {
@@ -13,5 +13,8 @@ export default {
 
   setClearProdutosCart(state) {
     state.produtos = [];
+  },
+  setProdutos(state, produtos) {
+    state.produtos = produtos;
   },
 };

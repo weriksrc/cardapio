@@ -19,4 +19,8 @@ export default {
   actionClearProdutosCart({ commit }) {
     commit("setClearProdutosCart");
   },
+
+  actionProdutos({ commit }, produtos) {
+    commit("setProdutos", produtos);
+  },
 };

@@ -1,8 +1,12 @@
 <template>
-  <div class="pa-2">
-    <v-btn @click="storePedido()" block color="success">Fazer pedido</v-btn>
+  <div>
+    <v-btn class="btn-cart" @click="storePedido()" block color="error"
+      >Fazer pedido, total: R$
+      <strong class="ml-2"> {{ total }} </strong>
+    </v-btn>
   </div>
 </template>
+
 <script>
 import Pedidos from "../../../services/Pedidos/Pedidos";
 import { mapActions } from "vuex";
@@ -11,6 +15,7 @@ export default {
     produtos: {
       type: Array,
     },
+    total: Number,
   },
 
   methods: {
@@ -70,3 +75,4 @@ export default {
   },
 };
 </script>
+<style scoped></style>

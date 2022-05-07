@@ -19,7 +19,7 @@
 
           <v-list-item-subtitle
             class="color-font-subtitle ml-5"
-            v-text="`A partir de R$ ${item.valor_venda}`"
+            v-text="`R$ ${item.valor_venda}`"
           ></v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
