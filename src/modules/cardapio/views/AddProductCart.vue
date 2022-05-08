@@ -42,7 +42,7 @@ export default {
       actionAddProduto: "cart/actionAddProduto",
     }),
     async addProdutoCart() {
-      this.actionAddProduto(this.getCurrentProduto);
+      this.actionAddProduto({ ...this.getCurrentProduto });
     },
 
     async showProduto() {
