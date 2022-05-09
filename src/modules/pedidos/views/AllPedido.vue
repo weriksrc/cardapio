@@ -1,18 +1,15 @@
 <template>
   <div>
-    <BtnAdd />
-    <ListPedidos :pedidos="pedidos" />
+    <TimelinePedidosCliente :pedidos="pedidos" />
   </div>
 </template>
 <script>
-import ListPedidos from "../components/ListPedidos";
-import BtnAdd from "../components/BtnAdd";
 import servicePedidos from "../../../services/Pedidos/Pedidos";
+import TimelinePedidosCliente from "../components/TimelinePedidosCliente.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    ListPedidos,
-    BtnAdd,
+    TimelinePedidosCliente,
   },
   data() {
     return {

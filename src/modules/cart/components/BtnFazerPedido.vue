@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <v-btn class="btn-cart" @click="storePedido()" block color="error"
-      >Fazer pedido, total: R$
-      <strong class="ml-2"> {{ total }} </strong>
-    </v-btn>
-  </div>
+  <v-btn block @click="storePedido()" color="error"
+    >Fazer pedido, total: R$
+    <strong class="ml-2"> {{ total }} </strong>
+  </v-btn>
 </template>
 
 <script>

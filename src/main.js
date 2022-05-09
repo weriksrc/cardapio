@@ -40,6 +40,14 @@ window.Echo = new Echo({
 Vue.config.productionTip = false;
 Vue.use(loader);
 Vue.use(response);
+
+Vue.filter("dateTime", function (value) {
+  if (!value) return "";
+  let date = new Date(value);
+  return `${
+    date.getDay() + 1
+  }/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+});
 new Vue({
   router,
   vuetify,

@@ -2,7 +2,7 @@
   <v-card max-height="480" height="480" class="scroll">
     <v-list two-line class="mb-12 pa-3">
       <template v-for="(item, key) in produtos">
-        <v-list-item :key="key" elevation="1" class="mt-5" max-width="95%">
+        <v-list-item :key="key" elevation="10" class="mt-5">
           <v-img
             lazy-src="https://picsum.photos/id/11/10/6"
             max-height="80"
@@ -17,7 +17,7 @@
             ></v-list-item-title>
 
             <v-list-item-subtitle class="text--primary ml-2">
-              <p>R$ {{ item.totalComAdicionais }}</p>
+              <p>R$ {{ calculaTotalProdutoComAdiconais(item) }}</p>
               <p>
                 <v-btn
                   small
@@ -80,6 +80,24 @@ export default {
 
     removeItem(key) {
       this.produtos.splice(key, 1);
+    },
+
+    calculaTotalProdutoComAdiconais(produto) {
+      let totalAdicionais = 0;
+
+      produto.produtos_adicionais.map((produtoAdicional) => {
+        if (produtoAdicional.quantidade) {
+          totalAdicionais +=
+            parseFloat(produtoAdicional.quantidade) *
+            parseFloat(produtoAdicional.adicional.valor_venda);
+        }
+      });
+
+      let valorVenda = parseFloat(produto.valor_venda);
+      let quantidade = parseFloat(produto.quantidade);
+      let totalProduto = (valorVenda + totalAdicionais) * quantidade;
+
+      return totalProduto;
     },
   },
 };
