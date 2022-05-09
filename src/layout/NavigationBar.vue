@@ -1,18 +1,30 @@
 <template>
   <div class="navigation-bar mt-5">
-    <v-row class="line-navigation-bar">
-      <v-col class="d-flex justify-center pt-0">
-        <v-btn icon>
-          <v-icon size="35"> mdi-bullhorn-outline </v-icon>
-        </v-btn>
-      </v-col>
+    <template>
+      <v-bottom-navigation
+        absolute
+        horiozntal
+        scroll-target="#hide-on-scroll-example"
+      >
+        <v-btn color="error accent-5" text>
+          <span>Granção</span>
 
-      <v-col class="d-flex justify-center pt-0">
-        <v-btn to="/pedidos/listar" icon>
-          <v-icon size="35"> mdi-clipboard-list-outline </v-icon>
+          <v-icon>mdi-bullhorn-outline</v-icon>
         </v-btn>
-      </v-col>
-    </v-row>
+
+        <v-btn color="error accent-5" text>
+          <span>Comanda</span>
+
+          <v-icon>mdi-smart-card-outline</v-icon>
+        </v-btn>
+
+        <v-btn color="error accent-5" to="/pedidos/listar" text>
+          <span>Pedidos</span>
+
+          <v-icon>mdi-clipboard-list-outline</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
+    </template>
   </div>
 </template>
 
