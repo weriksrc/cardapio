@@ -27,7 +27,7 @@
         <template v-for="(pedido, index) in pedidos">
           <v-timeline-item color="teal lighten-3" small :key="index">
             <v-row class="pt-1">
-              <v-col cols="3">
+              <v-col align-self="start" cols="3">
                 <strong>n° {{ pedido.id }}</strong>
               </v-col>
               <v-col>
@@ -37,18 +37,19 @@
           </v-timeline-item>
           <template v-for="(produtoPedido, index) in pedido.produtos_pedidos">
             <v-timeline-item color="pink" small hide-dot :key="index">
-              <v-badge
-                v-if="produtoPedido.comanda_id"
-                color="green"
-                :content="produtoPedido.comanda_id"
-              >
-                <v-icon>mdi-smart-card-outline</v-icon>
-              </v-badge>
-
-              <strong class="ml-3">{{ produtoPedido.produto.nome }}</strong>
-              <div v-if="produtoPedido.produtos_adicionais_pedidos.length">
-                +adicionais
-              </div>
+              <v-row class="pb-4 pt-4">
+                <v-badge
+                  color="green"
+                  :value="produtoPedido.produtos_adicionais_pedidos.length"
+                  :content="`+${produtoPedido.produtos_adicionais_pedidos.length}`"
+                >
+                  <v-chip x-small class="mr-1"
+                    >{{ produtoPedido.quantidade }} x</v-chip
+                  >
+                  <strong>{{ produtoPedido.produto.nome }}</strong>
+                </v-badge>
+                <!-- <v-chip x-small class="ml-3">comanda 10</v-chip> -->
+              </v-row>
             </v-timeline-item>
           </template>
         </template>

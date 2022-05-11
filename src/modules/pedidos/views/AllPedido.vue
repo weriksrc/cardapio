@@ -1,15 +1,15 @@
 <template>
   <div>
-    <TimelinePedidosCliente :pedidos="pedidos" />
+    <TimelinePedidosMesa :pedidos="pedidos" />
   </div>
 </template>
 <script>
 import servicePedidos from "../../../services/Pedidos/Pedidos";
-import TimelinePedidosCliente from "../components/TimelinePedidosCliente.vue";
+import TimelinePedidosMesa from "../components/TimelinePedidosMesa.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    TimelinePedidosCliente,
+    TimelinePedidosMesa,
   },
   data() {
     return {
