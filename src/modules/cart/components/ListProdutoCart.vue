@@ -48,6 +48,7 @@
 import { mapActions } from "vuex";
 import MinusPlus from "@/components/MinusPlus";
 import RemoveItem from "./RemoveItem.vue";
+
 export default {
   components: {
     MinusPlus,

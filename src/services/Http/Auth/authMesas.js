@@ -1,6 +1,6 @@
-import BaseService from "../BaseService";
+import BaseHttp from "../BaseHttp";
 
-class AuthMesas extends BaseService {
+class AuthMesas extends BaseHttp {
   constructor(id = "") {
     super(id);
   }

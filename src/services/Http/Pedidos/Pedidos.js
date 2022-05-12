@@ -1,6 +1,6 @@
-import BaseService from "../BaseService";
+import BaseHttp from "../BaseHttp";
 
-class Pedidos extends BaseService {
+class Pedidos extends BaseHttp {
   constructor(id) {
     super(id);
   }

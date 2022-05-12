@@ -12,7 +12,7 @@ import CurrentCaroselProduct from "../components/CurrentCaroselProduct";
 import CurrentDescriptionProduct from "../components/CurrentDescriptionProduct";
 import ListCurrentAdditionalProduct from "../components/ListCurrentAdditionalProduct";
 import BtnCart from "../components/BtnCart";
-import serviceProduto from "../../../services/Estoque/Produtos";
+import serviceProduto from "../../../services/Http/Estoque/Produtos";
 
 import { mapActions, mapGetters } from "vuex";
 export default {

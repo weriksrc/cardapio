@@ -19,7 +19,7 @@ export default {};
 .absolute {
   position: fixed;
   left: 50%;
-  bottom: 30px;
+  bottom: 3px;
   transform: translateX(-50%);
 }
 </style>

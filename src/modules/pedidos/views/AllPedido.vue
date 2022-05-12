@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import servicePedidos from "../../../services/Pedidos/Pedidos";
+import servicePedidos from "../../../services/Http/Pedidos/Pedidos";
 import TimelinePedidosMesa from "../components/TimelinePedidosMesa.vue";
 import { mapGetters } from "vuex";
 export default {
@@ -30,7 +30,6 @@ export default {
             "produtosPedidos.produto,produtosPedidos.produtosAdicionaisPedidos",
         });
         this.pedidos = data.data;
-        console.log("SHOW PEDIDOS", data.data);
       } catch (error) {
         this.$response("Erro ao lista pedidos");
       } finally {

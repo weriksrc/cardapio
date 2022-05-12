@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Pedidos from "../../../services/Pedidos/Pedidos";
+import Pedidos from "../../../services/Http/Pedidos/Pedidos";
 import { mapActions } from "vuex";
 export default {
   props: {

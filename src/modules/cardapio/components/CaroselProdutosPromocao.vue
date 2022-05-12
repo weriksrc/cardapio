@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import servicesProdutos from "../../../services/Estoque/Produtos";
+import servicesProdutos from "../../../services/Http/Estoque/Produtos";
 export default {
   data() {
     return {

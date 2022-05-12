@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-import serviceAuthMesas from "../../../services/Auth/authMesas";
+import serviceAuthMesas from "../../../services/Http/Auth/authMesas";
 import { mapActions } from "vuex";
 export default {
   data() {

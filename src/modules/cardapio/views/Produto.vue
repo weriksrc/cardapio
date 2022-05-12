@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import servicesCategorias from "../../../services/Estoque/Categorias";
+import servicesCategorias from "../../../services/Http/Estoque/Categorias";
 import CurrentImageCategory from "../components/CurrentImageCategory";
 import ListProduto from "../components/ListProduto";
 export default {

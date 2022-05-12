@@ -1,7 +1,7 @@
-import BaseService from "../BaseService";
+import BaseHttp from "../BaseHttp";
 import produtos from "./Produtos";
 
-class Categorias extends BaseService {
+class Categorias extends BaseHttp {
   constructor(id = "") {
     super(id);
   }

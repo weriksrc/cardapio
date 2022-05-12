@@ -86,7 +86,7 @@ export default {
 .absolute {
   position: fixed;
   left: 50%;
-  bottom: 30px;
+  bottom: 50px;
   transform: translateX(-50%);
 }
 .center {

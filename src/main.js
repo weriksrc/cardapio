@@ -9,6 +9,9 @@ import response from "./support/reponse";
 
 import Echo from "laravel-echo";
 import http from "@/http";
+
+import dateTimeToHours from "./filters/dateTimeToHours";
+import formatMoeda from "./filters/formatMoeda";
 window.Pusher = require("pusher-js");
 
 window.Echo = new Echo({
@@ -40,14 +43,9 @@ window.Echo = new Echo({
 Vue.config.productionTip = false;
 Vue.use(loader);
 Vue.use(response);
+Vue.use(dateTimeToHours);
+Vue.use(formatMoeda);
 
-Vue.filter("dateTime", function (value) {
-  if (!value) return "";
-  let date = new Date(value);
-  return `${
-    date.getDay() + 1
-  }/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-});
 new Vue({
   router,
   vuetify,

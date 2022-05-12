@@ -1,6 +1,6 @@
 import http from "@/http";
 
-export default class BaseService {
+export default class BaseHttp {
   id = "";
   uri = "";
   uriRelationship = "";

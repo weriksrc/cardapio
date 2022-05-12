@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import servicesCategorias from "../../../services/Estoque/Categorias";
+import servicesCategorias from "../../../services/Http/Estoque/Categorias";
 export default {
   data() {
     return {
