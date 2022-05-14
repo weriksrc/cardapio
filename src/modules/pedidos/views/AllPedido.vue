@@ -1,19 +1,27 @@
 <template>
   <div>
-    <TimelinePedidosMesa :pedidos="pedidos" />
+    <ProdutosEmDestaque />
+    <v-icon>mdi-account</v-icon>
+    <component :pedidos="pedidos" :is="timeline" />
   </div>
 </template>
 <script>
 import servicePedidos from "../../../services/Http/Pedidos/Pedidos";
 import TimelinePedidosMesa from "../components/TimelinePedidosMesa.vue";
+import TimelinePedidosComanda from "../components/TimelinePedidosComanda.vue";
+import ProdutosEmDestaque from "../components/ProdutosEmDestaque.vue";
 import { mapGetters } from "vuex";
 export default {
+  name: "AllPedido",
   components: {
     TimelinePedidosMesa,
+    TimelinePedidosComanda,
+    ProdutosEmDestaque,
   },
   data() {
     return {
       pedidos: [],
+      timeline: "TimelinePedidosComanda",
     };
   },
   computed: {
